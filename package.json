@@ -1,0 +1,31 @@
+{
+  "name": "redis-data-estimation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cli": "docker run --rm -it --name rediscli --link redis redis redis-cli -h redis",
+    "flush": "docker run --rm -it --name rediscli-flush --link redis redis redis-cli -h redis FLUSHDB",
+    "info": "docker run --rm -it --name rediscli-info --link redis redis redis-cli -h redis info memory | grep 'used_memory_human'",
+    "redis": "docker run -d -p 6379:6379 --name redis redis",
+    "start:local": "REDIS_HOST=localhost node index.js",
+    "start": "./run.sh"
+  },
+  "author": "Julien Bisconti <julienbi@unity3d.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "columnify": "^1.5.4",
+    "draftlog": "^1.0.12",
+    "lodash": "^4.17.5",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "1.10.2"
+  }
+}
